@@ -116,6 +116,7 @@ nav ul li a img {
 .search-bar {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 32px;
 }
 
 .search-bar li {

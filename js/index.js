@@ -20,36 +20,48 @@ fetchMovies();
 
 function renderMovie() {
   myData.results.forEach((movie) => {
-      container.insertAdjacentHTML(
-        "beforeend",
-        `
+    container.insertAdjacentHTML(
+      "beforeend",
+      `
             <div>
-                <a href="#">
-                    <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.original_title}">
+            <a href="#">
+            <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.original_title}">
                 </a>
             </div>
             `
       );
     });
-  myData.results.forEach((movie) => {
+    myData.results.forEach((movie) => {
       slider.insertAdjacentHTML(
         "beforeend",
         `
-            <div>
-                <a href="#">
+        <div>
+        <a href="#">
                     <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.original_title}">
-                </a>
-            </div>
+                    </a>
+                    </div>
             `
-      );
-    });
-}
+          );
+        });
+      }
 
 let homeSearch = document.querySelector(".search-input");
 let movieCategories = document.querySelector(".movie-categories");
 homeSearch.addEventListener("input", (e) => {
-  let targetMovie = e.target.value;
-  container.style.display = "none";
-  console.log(`" ${targetMovie } "`)
+  let targetMovie = e.target.value.toLowerCase();
+  container.innerHTML = ''
+  
+  myData.results.forEach(movie => {
+    if(movie.title.toLowerCase().includes(targetMovie)){
+      container.insertAdjacentHTML('beforeend', `
+        <div>
+        <a href="#">
+        <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.original_title}">
+                </a>
+            </div>
+        `)
+    }
+  })
 
 });
+
