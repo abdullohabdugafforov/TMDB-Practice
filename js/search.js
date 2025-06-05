@@ -1,4 +1,5 @@
 let myData; 
+let movieList = document.querySelector('.movie-list')
 const API_KEY = "14c4f59ee0e2dd110e8f70b0a7d3439b";
 
 async function fetchMovies() {
@@ -15,6 +16,48 @@ async function fetchMovies() {
 
 fetchMovies()
 
-function renderMovie(){
-    console.log(myData)
+function renderMovie() {
+  myData.results.forEach((movie) => {
+    movieList.insertAdjacentHTML(
+      "beforeend",
+      `
+            <div>
+              <a href="#">
+                <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.original_title}">
+              </a>
+              <div>
+                <h5>${movie.title}</h5>
+                <p class='movie-rate'><img src="./images/Star.png">${Number(movie.vote_average.toFixed(1))}</p>
+                <p><img src="./images/CalendarBlank.png">${movie.release_date}</p>
+                <p><img src="./images/Ticket.png">${movie.original_language}</p>
+              </div>
+            </div>
+            `
+      );
+    })
 }
+
+let searchInput = document.querySelector('.search-input')
+searchInput.addEventListener("input", (e) => {
+  let targetMovie = e.target.value.toLowerCase();
+  movieList.innerHTML = ''
+  
+  myData.results.forEach(movie => {
+    if(movie.title.toLowerCase().includes(targetMovie)){
+      movieList.insertAdjacentHTML('beforeend', `
+        <div>
+              <a href="#">
+                <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.original_title}">
+              </a>
+              <div>
+                <h5>${movie.title}</h5>
+                <p class='movie-rate'><img src="./images/Star.png">${Number(movie.vote_average.toFixed(1))}</p>
+                <p><img src="./images/CalendarBlank.png">${movie.release_date}</p>
+                <p><img src="./images/Ticket.png">${movie.original_language}</p>
+              </div>
+            </div>
+        `)
+    }
+  })
+
+});

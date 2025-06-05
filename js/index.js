@@ -64,4 +64,3 @@ homeSearch.addEventListener("input", (e) => {
   })
 
 });
-

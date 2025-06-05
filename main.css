@@ -129,3 +129,45 @@ nav ul li a img {
     text-decoration: none;
     font-size: 16px;
 }
+
+.movie-list {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.movie-list div{
+    display: flex;
+    gap: 12px;
+}
+
+.movie-list div h5{
+    font-size: 16px;
+    color: white;
+}
+
+.movie-list div img{
+    width: 95px;
+    border-radius: 16px;
+}
+
+.movie-list div div {
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movie-list div div img {
+    width: 16px;
+    margin-right: 4px;
+}
+
+.movie-list div div h5, p  {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.movie-rate {
+    color: #FF8700;
+}
