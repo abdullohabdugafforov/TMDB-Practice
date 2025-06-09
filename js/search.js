@@ -21,10 +21,8 @@ function renderMovie() {
     movieList.insertAdjacentHTML(
       "beforeend",
       `
-            <div>
-              <a href="#">
-                <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.original_title}">
-              </a>
+            <div onclick="goToDetail(${movie.id})">
+              <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.original_title}">
               <div>
                 <h5>${movie.title}</h5>
                 <p class='movie-rate'><img src="./images/Star.png">${Number(movie.vote_average.toFixed(1))}</p>
@@ -45,10 +43,8 @@ searchInput.addEventListener("input", (e) => {
   myData.results.forEach(movie => {
     if(movie.title.toLowerCase().includes(targetMovie)){
       movieList.insertAdjacentHTML('beforeend', `
-        <div>
-              <a href="#">
-                <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.original_title}">
-              </a>
+        <div onclick="goToDetail(${movie.id})">
+              <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.original_title}">
               <div>
                 <h5>${movie.title}</h5>
                 <p class='movie-rate'><img src="./images/Star.png">${Number(movie.vote_average.toFixed(1))}</p>
@@ -61,3 +57,7 @@ searchInput.addEventListener("input", (e) => {
   })
 
 });
+
+function goToDetail(movieId) {
+      window.location.href = `detail.html?id=${movieId}`;
+}

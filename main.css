@@ -171,3 +171,95 @@ nav ul li a img {
 .movie-rate {
     color: #FF8700;
 }
+
+.movie-card {
+  max-width: 700px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.banner {
+  position: relative;
+  height: 210px;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+  object-position: center;
+  display: block;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.rating {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  background-color: #252836;
+  color: #FF8700;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.poster-title {
+  position: relative;
+  top: -60px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+  padding: 20px;
+}
+
+.poster {
+  width: 95px;
+  border-radius: 8px;
+}
+
+.title-info h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  max-width: 210px;
+  color: #fff;
+
+}
+
+.meta {
+  margin-bottom: 28px;
+  font-size: 14px;
+  color: #ccc;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 20px;
+  border-bottom: 2px solid #444;
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  padding: 10px;
+  color: #aaa;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tabs button.active {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+}
+
+.description {
+  padding: 20px;
+  font-size: 15px;
+  color: #ddd;
+}
