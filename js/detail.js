@@ -3,7 +3,19 @@ const cardId = Number(params.get("id"));
 
 let myData;
 const detailDiv = document.getElementById("card-details");
+const body = document.querySelector("body");
 const API_KEY = "14c4f59ee0e2dd110e8f70b0a7d3439b";
+
+body.insertAdjacentHTML(
+  "afterbegin",
+  `
+    <ul class="search-bar">
+        <li><a href="./search.html"><</a></li>
+        <li><a href="#">Detail</a></li>
+        <li onclick='sendId(${cardId})'><img src="./images/Bookmark.png" alt=""></li>
+    </ul>
+  `
+);
 
 async function fetchMovies() {
   try {
@@ -18,7 +30,9 @@ async function fetchMovies() {
         detailDiv.innerHTML = `
             <div class="movie-card">
     <div class="banner">
-      <img src="https://image.tmdb.org/t/p/w200${element.poster_path}" alt="Spiderman Banner" class="banner-img" />
+      <img src="https://image.tmdb.org/t/p/w200${
+        element.poster_path
+      }" alt="Spiderman Banner" class="banner-img" />
       <div class="rating">
       <img src='./images/Star.png'> 
       ${element.vote_average.toFixed(1)}
@@ -26,14 +40,16 @@ async function fetchMovies() {
     </div>
 
     <div class="poster-title">
-      <img src="https://image.tmdb.org/t/p/w200${element.poster_path}" alt="Spiderman Poster" class="poster" />
+      <img src="https://image.tmdb.org/t/p/w200${
+        element.poster_path
+      }" alt="Spiderman Poster" class="poster" />
       <div class="title-info">
         <h2>${element.title}</h2>
       </div>
     </div>
 
     <div class="meta">
-          <span>📅 ${element.release_date   } |</span>
+          <span>📅 ${element.release_date} |</span>
           <span>🏁 ${element.original_language} |</span>
           <span>➿ ${element.vote_average.toFixed(1)}</span>
         </div>
@@ -62,3 +78,21 @@ async function fetchMovies() {
 }
 
 fetchMovies();
+
+function sendId(movieId) {
+  let data = localStorage.getItem('movieList');
+  if (!data) {
+    let arr = [];
+    arr.push(movieId);
+    localStorage.setItem('movieList', JSON.stringify(arr));
+  } else {
+    data = JSON.parse(data);
+    if(data.includes(movieId)){
+        alert('Bu malumot bor')
+    }else{
+        data.push(movieId);
+        localStorage.setItem('movieList', JSON.stringify(data));
+        console.log(data);
+    }
+  }
+}
