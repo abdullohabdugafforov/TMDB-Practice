@@ -88,11 +88,11 @@ function sendId(movieId) {
   } else {
     data = JSON.parse(data);
     if(data.includes(movieId)){
-        alert('Bu malumot bor')
+        alert('Already added to Watch List')
     }else{
         data.push(movieId);
         localStorage.setItem('movieList', JSON.stringify(data));
-        console.log(data);
+        alert('Succesfully added')
     }
   }
 }
